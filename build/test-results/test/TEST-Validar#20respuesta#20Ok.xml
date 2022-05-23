@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Validar respuesta Ok" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-22T23:27:25" hostname="DESKTOP-90O2SEU" time="13.066">
+  <properties/>
+  <testcase name="Validar respuesta Ok" classname="Validar respuesta Ok" time="13.066"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

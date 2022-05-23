@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Validar respuesta Ok</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+            > <a href="9ae2dbea2d906812895a3a7cf2da73b98077cc2b0e617cecf6b8a2cf80ef2d3a.html">Validar Respuesta Ok</a>
+        > Validar respuesta Ok
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 22-05-2022 18:27</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fa fa-2x fa-comments-o"></i>
+                                        <span class="story-header-title">Validar Respuesta Ok </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Validar respuesta Ok
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+                <!-- CAST MEMBERS -->
+                <div>&nbsp;</div>
+                <div class="story-title">
+                    <table class="outcome-header">
+                        <tr>
+                            <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fa fa-2x fa-users"></i>
+                                        <span class="story-header-title">
+                                            <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                                               role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                                        </span>
+                                    </h3>
+
+                                    <div class="cast-member collapse" id="castDetails">
+                                        <table class="cast">
+                                            <tr>
+                                                    <td width="100%">
+                                                        <h4>
+                                                            <i class="fa fa-2x fa-user-o"></i>&nbsp;<span>Pepito Perez</span>
+                                                            <h4>
+                                                                <p></p>
+                                                                <ul>
+                                                                        <li><strong>Pepito Perez can:</strong>
+                                                                            <ul>
+                                                                                    <li>call an API at https://www.etnassoft.com/api/v1</li>
+                                                                            </ul>
+                                                                        </li>
+                                                                </ul>
+                                                    </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- END CAST MEMBERS -->
+
+
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+
+    <div id="beforetable"></div>
+
+
+    <div id="tablecontents">
+        <div>
+            <table class="step-table">
+                <tr class="step-titles">
+                    <th width="65">
+                    </th>
+                    <th class="step-description-column greentext">
+                        Steps
+                    </th>
+
+                    <th width="130" class="greentext">Outcome</th>
+                    <th width="100" class="greentext"><i title="Duration" class="far fa-clock"></i></th>
+                </tr>
+                <tr class="step-table-separator">
+                    <td colspan="5"></td>
+                </tr>
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0 success-icon"
+                                       style="margin-left: 20px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                                   style="display:block;">
+                                    <span class="top-level-step">
+                                                When realizo una solicitud a un endpoint con parametros definidos
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">7.23s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="0-0"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection0-0 success-icon"
+                                       style="margin-left: 40px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                                   style="display:block;">
+                                    <span class="nested-step">
+                                                Pepito Perez executes a GET on the resource /get/?any_tags=[html,css,javascript]&amp;order=newest
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-step">5.64s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="90" class="step-icon">
+                            <a name="0-0-0"></a>
+                                <span style="margin-left: 60px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                GET https://www.etnassoft.com/api/v1/get/?any_tags=%5Bhtml%2Ccss%2Cjavascript%5D&amp;amp%3Border=newest
+                                        </span>
+                                <span class="evidence">
+                                        <span class="piece-of-evidence">
+                    <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-3">
+                            REST Query
+                        </button>
+                    </span>
+                    <!-- Modal -->
+                    <div class="rest-query-details">
+                        <div class="collapse multi-collapse" id="restModal-REST-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4>Response</h4>
+                                        <p>Status code: 200</p>
+                                        <p>Content Type: null</p>
+                                        <h4>Request Headers</h4>
+                                        <pre>Accept=*/*</pre>
+                                        <h4>Content Body</h4>
+                                        <pre></pre>
+                                        <h4>Request Cookies</h4>
+                                        <pre></pre>
+                                        <h4>Response Headers</h4>
+                                        <pre>Server: nginx<br>Date: Sun, 22 May 2022 23:27:35 GMT<br>Content-Type: text/html; charset=UTF-8<br>Content-Length: 2268<br>Connection: keep-alive<br>Access-Control-Allow-Origin: *<br>Access-Control-Allow-Methods: PUT, GET, POST, DELETE, PATCH, OPTIONS<br>Access-Control-Allow-Headers: Authorization, WWW-Authenticate, Origin, X-Requested-With, Content-Type, Accept, Cache-Control<br>Access-Control-Expose-Headers: X-TotalItemCount, X-ItemCountPerPage<br>Expires: Thu, 19 Nov 1981 08:52:00 GMT<br>Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0<br>Pragma: no-cache<br>X-Pingback: https://www.etnassoft.com/xmlrpc.php<br>Link: &lt;https://www.etnassoft.com/wp-json/&gt;; rel=&quot;https://api.w.org/&quot;, &lt;https://www.etnassoft.com/?p=1216&gt;; rel=shortlink<br>Set-Cookie: PHPSESSID=hqa2tmsoh3kuqb64s6uuduid94; path=/<br>Vary: Accept-Encoding<br>Content-Encoding: gzip<br>X-Powered-By: PleskLin</pre>
+                                    <h4>Response Body</h4>
+                                        <pre>&lt;html&gt;<br>  &lt;body&gt;[{&quot;ID&quot;:&quot;16960&quot;,&quot;title&quot;:&quot;Learn Programming&quot;,&quot;author&quot;:&quot;Antti Salonen&quot;,&quot;content&quot;:&quot;This book is aimed at readers who are interested in software development but have very little to no prior experience.\r\n\r\nThe book doesn’t have any new information compared to what you can find online or in other books; it has two purposes:\r\n\r\n&amp;lt;ol&amp;gt;\r\n&amp;lt;li&amp;gt;It includes what I think is important for software development from a large variety of topics, saving the reader from the dilemma “what should I learn”&amp;lt;\/li&amp;gt;\r\n&amp;lt;li&amp;gt;It collates relevant information from lots of sources in one book, saving the reader from going through several separate web sites and books&amp;lt;\/li&amp;gt;\r\n&amp;lt;\/ol&amp;gt;\r\n\r\nIt aims to contain an overview of almost everything that I think is important for software developers. It doesn’t contain everything; but it should contain enough for the reader to understand software development, and to be able to read about and understand any topic in further detail as needed.\r\n\r\nThe book focuses on teaching the core principles around software development. It uses several technologies to this goal (e.g. C, Python, JavaScript, HTML, etc.) but is not a book about the technologies themselves. The reader will learn the basics (or in some cases more) of various technologies along the way, but the focus is on building a foundation for software development.&quot;,&quot;content_short&quot;:&quot;This book is aimed at readers who are interested in software development but have very little to no prior experience.\r\n\r\nThe book doesn’t have any new information compared to what you ...&quot;,&quot;publisher&quot;:&quot;Autoedici&#92;00f3n&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;465&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/learn-programming\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/learn-programming&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/10\/Learn-Programming-Antti-Salonen-OpenLibra-323x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/10\/Learn-Programming-Antti-Salonen-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:277,&quot;name&quot;:&quot;bases de datos&quot;,&quot;nicename&quot;:&quot;bases-de-datos&quot;},{&quot;tag_id&quot;:2999,&quot;name&quot;:&quot;C&quot;,&quot;nicename&quot;:&quot;c&quot;},{&quot;tag_id&quot;:1076,&quot;name&quot;:&quot;Cplusplus&quot;,&quot;nicename&quot;:&quot;cplusplus&quot;},{&quot;tag_id&quot;:2996,&quot;name&quot;:&quot;HTML&quot;,&quot;nicename&quot;:&quot;html&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;},{&quot;tag_id&quot;:240,&quot;name&quot;:&quot;python&quot;,&quot;nicename&quot;:&quot;python&quot;},{&quot;tag_id&quot;:71,&quot;name&quot;:&quot;software&quot;,&quot;nicename&quot;:&quot;software&quot;},{&quot;tag_id&quot;:374,&quot;name&quot;:&quot;sql&quot;,&quot;nicename&quot;:&quot;sql&quot;},{&quot;tag_id&quot;:381,&quot;name&quot;:&quot;UNIX&quot;,&quot;nicename&quot;:&quot;unix&quot;}]},{&quot;ID&quot;:&quot;16872&quot;,&quot;title&quot;:&quot;Kotlin Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This Kotlin Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow.\r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This Kotlin Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow.\r\n\r\nText content is released under Creative Commons BY-SA, ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;94&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/kotlin-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/kotlin-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/KotlinNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/KotlinNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:224,&quot;name&quot;:&quot;Otros Lenguajes&quot;,&quot;nicename&quot;:&quot;programacion_otros_lenguajes&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:448,&quot;name&quot;:&quot;framework&quot;,&quot;nicename&quot;:&quot;framework&quot;},{&quot;tag_id&quot;:97,&quot;name&quot;:&quot;java&quot;,&quot;nicename&quot;:&quot;java&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:3361,&quot;name&quot;:&quot;Kotlin&quot;,&quot;nicename&quot;:&quot;kotlin&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;}]},{&quot;ID&quot;:&quot;16806&quot;,&quot;title&quot;:&quot;JavaScript Notes for Professional&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This JavaScript Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This JavaScript Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;490&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/javascript-notes-for-professional\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/javascript-notes-for-professional&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/JavaScriptNotesForProfessionals-Openlibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/JavaScriptNotesForProfessionals-Openlibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:223,&quot;name&quot;:&quot;Javascript \/ AJAX&quot;,&quot;nicename&quot;:&quot;programacion_javascript_ajax&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:287,&quot;name&quot;:&quot;desarrollo web&quot;,&quot;nicename&quot;:&quot;desarrollo-web&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;}]},{&quot;ID&quot;:&quot;16832&quot;,&quot;title&quot;:&quot;MongoDB Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This MongoDB Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow.\r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This MongoDB Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow.\r\n\r\nText content is released under Creative Commons BY-SA, ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;73&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/mongodb-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/mongodb-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/MongoDBNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/MongoDBNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:201,&quot;name&quot;:&quot;Bases de datos&quot;,&quot;nicename&quot;:&quot;bases_de_datos&quot;},{&quot;category_id&quot;:205,&quot;name&quot;:&quot;NoSQL&quot;,&quot;nicename&quot;:&quot;nosql&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:277,&quot;name&quot;:&quot;bases de datos&quot;,&quot;nicename&quot;:&quot;bases-de-datos&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:1726,&quot;name&quot;:&quot;MongoDB&quot;,&quot;nicename&quot;:&quot;mongodb&quot;},{&quot;tag_id&quot;:2992,&quot;name&quot;:&quot;NoSQL&quot;,&quot;nicename&quot;:&quot;nosql&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;}]},{&quot;ID&quot;:&quot;16798&quot;,&quot;title&quot;:&quot;HTML5 Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This HTML5 Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This HTML5 Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;124&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/html5-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/html5-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/HTML5NotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/HTML5NotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:212,&quot;name&quot;:&quot;Desarrollo Web&quot;,&quot;nicename&quot;:&quot;desarrollo_web&quot;},{&quot;category_id&quot;:215,&quot;name&quot;:&quot;HTML&quot;,&quot;nicename&quot;:&quot;html&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:287,&quot;name&quot;:&quot;desarrollo web&quot;,&quot;nicename&quot;:&quot;desarrollo-web&quot;},{&quot;tag_id&quot;:83,&quot;name&quot;:&quot;html5&quot;,&quot;nicename&quot;:&quot;html5&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:1386,&quot;name&quot;:&quot;web&quot;,&quot;nicename&quot;:&quot;web&quot;}]},{&quot;ID&quot;:&quot;16788&quot;,&quot;title&quot;:&quot;React Native Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This React Native Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This React Native Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;91&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/react-native-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/react-native-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/ReactNativeNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/ReactNativeNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:223,&quot;name&quot;:&quot;Javascript \/ AJAX&quot;,&quot;nicename&quot;:&quot;programacion_javascript_ajax&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;},{&quot;tag_id&quot;:3355,&quot;name&quot;:&quot;React&quot;,&quot;nicename&quot;:&quot;react&quot;},{&quot;tag_id&quot;:3356,&quot;name&quot;:&quot;React Native&quot;,&quot;nicename&quot;:&quot;react-native&quot;}]},{&quot;ID&quot;:&quot;16800&quot;,&quot;title&quot;:&quot;HTML5 Canvas Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This HTML5 Canvas Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This HTML5 Canvas Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;180&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/html5-canvas-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/html5-canvas-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/HTML5CanvasNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/HTML5CanvasNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:212,&quot;name&quot;:&quot;Desarrollo Web&quot;,&quot;nicename&quot;:&quot;desarrollo_web&quot;},{&quot;category_id&quot;:215,&quot;name&quot;:&quot;HTML&quot;,&quot;nicename&quot;:&quot;html&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:82,&quot;name&quot;:&quot;canvas&quot;,&quot;nicename&quot;:&quot;canvas&quot;},{&quot;tag_id&quot;:287,&quot;name&quot;:&quot;desarrollo web&quot;,&quot;nicename&quot;:&quot;desarrollo-web&quot;},{&quot;tag_id&quot;:83,&quot;name&quot;:&quot;html5&quot;,&quot;nicename&quot;:&quot;html5&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;}]},{&quot;ID&quot;:&quot;16796&quot;,&quot;title&quot;:&quot;TypeScript Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This TypeScript Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This TypeScript Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;97&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/typescript-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/typescript-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/TypeScriptNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/TypeScriptNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:223,&quot;name&quot;:&quot;Javascript \/ AJAX&quot;,&quot;nicename&quot;:&quot;programacion_javascript_ajax&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;},{&quot;tag_id&quot;:2247,&quot;name&quot;:&quot;TypeScript&quot;,&quot;nicename&quot;:&quot;typescript&quot;}]},{&quot;ID&quot;:&quot;16808&quot;,&quot;title&quot;:&quot;jQuery Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This jQuery Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This jQuery Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;67&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/jquery-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/jquery-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/jQueryNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/jQueryNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:223,&quot;name&quot;:&quot;Javascript \/ AJAX&quot;,&quot;nicename&quot;:&quot;programacion_javascript_ajax&quot;},{&quot;category_id&quot;:329,&quot;name&quot;:&quot;jQuery&quot;,&quot;nicename&quot;:&quot;jquery_libros_programacion&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:287,&quot;name&quot;:&quot;desarrollo web&quot;,&quot;nicename&quot;:&quot;desarrollo-web&quot;},{&quot;tag_id&quot;:2758,&quot;name&quot;:&quot;frameworks&quot;,&quot;nicename&quot;:&quot;frameworks&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:2987,&quot;name&quot;:&quot;jQuery&quot;,&quot;nicename&quot;:&quot;jquery&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;}]},{&quot;ID&quot;:&quot;16814&quot;,&quot;title&quot;:&quot;Node.js Notes for Professionals&quot;,&quot;author&quot;:&quot;Varios&quot;,&quot;content&quot;:&quot;This Node.js Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified.&quot;,&quot;content_short&quot;:&quot;This Node.js Notes for Professionals book is compiled from Stack Overflow Documentation, the content is written by the beautiful people at Stack Overflow. \r\n\r\nText content is released under Creative Commons ...&quot;,&quot;publisher&quot;:&quot;GoalKicker.com&quot;,&quot;publisher_date&quot;:&quot;2018&quot;,&quot;pages&quot;:&quot;334&quot;,&quot;language&quot;:&quot;english&quot;,&quot;url_details&quot;:&quot;https:\/\/www.etnassoft.com\/biblioteca\/node-js-notes-for-professionals\/&quot;,&quot;url_download&quot;:&quot;https:\/\/openlibra.com\/book\/node-js-notes-for-professionals&quot;,&quot;cover&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/NodeJSNotesForProfessionals-OpenLibra-326x461.png&quot;,&quot;thumbnail&quot;:&quot;https:\/\/olcovers2.blob.core.windows.net\/coverswp\/2018\/05\/NodeJSNotesForProfessionals-OpenLibra-110x153.png&quot;,&quot;num_comments&quot;:&quot;0&quot;,&quot;categories&quot;:[{&quot;category_id&quot;:223,&quot;name&quot;:&quot;Javascript \/ AJAX&quot;,&quot;nicename&quot;:&quot;programacion_javascript_ajax&quot;},{&quot;category_id&quot;:220,&quot;name&quot;:&quot;Programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;libros_programacion&quot;}],&quot;tags&quot;:[{&quot;tag_id&quot;:287,&quot;name&quot;:&quot;desarrollo web&quot;,&quot;nicename&quot;:&quot;desarrollo-web&quot;},{&quot;tag_id&quot;:2758,&quot;name&quot;:&quot;frameworks&quot;,&quot;nicename&quot;:&quot;frameworks&quot;},{&quot;tag_id&quot;:2986,&quot;name&quot;:&quot;Javascript&quot;,&quot;nicename&quot;:&quot;javascript&quot;},{&quot;tag_id&quot;:107,&quot;name&quot;:&quot;node.js&quot;,&quot;nicename&quot;:&quot;node-js&quot;},{&quot;tag_id&quot;:32,&quot;name&quot;:&quot;programaci&#92;00f3n&quot;,&quot;nicename&quot;:&quot;programacion&quot;},{&quot;tag_id&quot;:760,&quot;name&quot;:&quot;programaci&#92;00f3n web&quot;,&quot;nicename&quot;:&quot;programacion-web&quot;}]}]&lt;/body&gt;<br>&lt;/html&gt;</pre>
+                                        <h4>Response Cookies</h4>
+                                        <pre>PHPSESSID=hqa2tmsoh3kuqb64s6uuduid94;Path=/</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        </span>
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="50" class="step-icon">
+                            <a name="1"></a>
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                                   style="display:block">
+                                    <i class="fa fa-plus-square-o imgstepSection1 success-icon"
+                                       style="margin-left: 20px; float:left; padding-right:5px"></i>
+                                </a>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                                   style="display:block;">
+                                    <span class="top-level-step">
+                                                Then se obtiene una respuesta 200 ok
+                                        </span>
+                                </a>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                        <td width="100"><span class="top-level-step">1.22s</span></td>
+                    </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table id="stepSection1" class="step-table-nested" style="display:none;">
+
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-0"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Status Esperado200
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.05s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-1"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Respuesta esperada no nula:  should be not null
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.01s</span></td>
+                    </tr>
+                    <tr class="test-SUCCESS">
+
+                        <td width="70" class="step-icon">
+                            <a name="1-2"></a>
+                                <span style="margin-left: 40px;"
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                        </td>
+
+                        <td class="step-description-column">
+                            <div class="step-description">
+                                    <span class="nested-group-step">
+                                                Then Elementos esperados:  should be (true)
+                                        </span>
+                                <span class="evidence">
+                                </span>
+                            </div>
+                        </td>
+
+                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                        <td width="100"><span class="nested-group-step">0.93s</span></td>
+                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                <tr class="test-SUCCESS">
+                        <td colspan="2"></td>
+                    <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>12.67s</em></span></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div id="beforefooter"></div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="version">Serenity BDD version 2.2.9</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function toggleDiv(divId) {
+            $("#" + divId).toggle();
+            var imgsrc = $(".img" + divId).attr('src');
+            if (imgsrc == 'images/plus.png') {
+                $(".img" + divId).attr("src", function () {
+                    return "images/minus.png";
+                });
+
+            } else {
+                $(".img" + divId).attr("src", function () {
+                    return "images/plus.png";
+                });
+            }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        $(document).ready(function () {
+            $('img.screenshot').imgPreview({
+                imgCSS: {
+                    width: '500px'
+                },
+                distanceFromCursor: {top: 10, left: -200}
+            });
+        });
+
+        //]]>
+    </script>
+    <div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+                src="" style="display: none; "></div>
+    <div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+        <img style="width: 200px; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+        <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+    <div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+    <div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>
